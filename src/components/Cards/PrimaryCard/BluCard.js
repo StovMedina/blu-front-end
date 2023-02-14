@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 
 function BluCard(props) {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card>
       <Card.Img variant={props.variant} src={props.src} />
       <Card.Body>
         <Card.Title>{props.cardTitle}</Card.Title>
