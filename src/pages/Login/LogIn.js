@@ -1,6 +1,5 @@
 import React from "react";
 import BluInput from "../../components/Forms/BluInput";
-import BluUserButton from "../../components/Button/BluUserButton";
 import { Form } from "react-bootstrap";
 import BluButton from "../../components/Button/BluButton";
 import loginSvg from "../../../src/media/login.svg";
@@ -11,7 +10,7 @@ const LogIn = () => {
     <div className="container-fluid login-container d-flex flex-column justify-content-center">
       <div className="row">
         <div className="col-12 col-lg-6 d-flex flex-column justify-content-center align-items-center">
-          <BluIlustration src={loginSvg} />
+          <BluIlustration src={loginSvg} alt="loading" />
         </div>
         <div className="col-12 col-lg-6 d-flex flex-column justify-content-center align-items-center">
           <Form className="w-100">
