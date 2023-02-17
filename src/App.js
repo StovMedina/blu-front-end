@@ -1,11 +1,11 @@
 import "./App.scss";
-import BluSearchBox from "./components/Forms/BluSearchBox";
+import LogIn from "./pages/Login/LogIn";
 
 function App() {
   return (
     <div className="App">
       hello world
-      <BluSearchBox />
+      <LogIn />
     </div>
   );
 }
