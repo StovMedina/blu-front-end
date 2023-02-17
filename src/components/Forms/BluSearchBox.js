@@ -3,14 +3,14 @@ import Form from "react-bootstrap/Form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-const BluSearchBox = () => {
+const BluSearchBox = (props) => {
   return (
     <div className="d-flex align-items-center">
       <Form.Control
         type="search"
-        placeholder="buscale prro"
+        placeholder={props.placeholder}
         className="me-2"
-        aria-label="Search"
+        aria-label={props.ariaLabel}
       ></Form.Control>
       <FontAwesomeIcon icon={faMagnifyingGlass} />
     </div>
