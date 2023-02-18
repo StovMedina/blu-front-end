@@ -1,11 +1,12 @@
 import "./App.scss";
-import SideBarMenu from "./GeneralMenu/SideBarMenu";
-import NavBarMenu from "./GeneralMenu/NavBarMenu";
+import SideBarMenu from "./components/GeneralMenu/SideBarMenu";
+import NavBarMenu from "./components/GeneralMenu/NavBarMenu";
 
 function App() {
-  return <div className="App">hello world 
+  return <div className="App">
+     <NavBarMenu/>
   <SideBarMenu/>
-  <NavBarMenu/>
+ 
     </div>;
 }
 
