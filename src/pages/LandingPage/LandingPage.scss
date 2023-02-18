@@ -1,0 +1,12 @@
+.landing-main__container {
+  gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  > div {
+    height: 400px;
+    img {
+      height: calc(100% - 100px);
+      object-fit: cover;
+    }
+  }
+}

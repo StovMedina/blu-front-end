@@ -1,5 +1,6 @@
 import React from "react";
 import BluCard from "../../components/Cards/PrimaryCard/BluCard";
+import "./LandingPage.scss";
 
 const LandingPage = () => {
   const products = [
