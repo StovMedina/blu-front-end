@@ -1,26 +1,52 @@
 import React from "react";
 import BluCard from "../../components/Cards/PrimaryCard/BluCard";
 import "./LandingPage.scss";
-import axios from "axios";
-import BluButton from "../../components/Button/BluButton";
-import { useEffect, useState } from "react";
+// import axios from "axios";
+// import BluButton from "../../components/Button/BluButton";
+import { useEffect } from "react";
+import { useMercadopago } from "react-sdk-mercadopago";
 
 const LandingPage = () => {
-  const [mp, setMp] = useState(null);
+  const mercadopago = useMercadopago.v2(
+    "TEST-e877fe73-bb6a-45e5-adb6-de90b04f0862",
+    {
+      locale: "es-MX",
+    }
+  );
 
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://sdk.mercadopago.com/js/v2";
-    script.async = true;
-    script.onload = () => {
-      setMp(window.MercadoPago);
-    };
-    document.body.appendChild(script);
-  }, []);
-  console.log(window);
+    if (mercadopago) {
+      mercadopago.checkout({
+        preference: {
+          id: "243699844-ed9ef249-2601-4517-b8a6-778d058216df",
+        },
+        render: {
+          container: ".cho-container",
+          label: "Pay",
+        },
+      });
+    }
+  }, [mercadopago]);
 
-  const mercadoPago = new mp();
-  console.log(mercadoPago);
+  // const [mp, setMp] = useState(null);
+
+  // useEffect(() => {
+  //   const script = document.createElement("script");
+  //   script.src = "https://sdk.mercadopago.com/js/v2";
+  //   script.async = true;
+  //   script.onload = () => {
+  //     setMp(window.MercadoPago);
+  //   };
+  //   document.body.appendChild(script);
+  // }, []);
+  // console.log(window);
+
+  // if (!mp) {
+  //   console.log("loading...");
+  // }
+
+  // const mercadoPago = new window.MercadoPago();
+  // console.log(mercadoPago);
 
   // const mercadopago = new mp.MercadoPago(
   //   "TEST-e877fe73-bb6a-45e5-adb6-de90b04f0862",
@@ -42,21 +68,21 @@ const LandingPage = () => {
   //   });
   // };
 
-  const handleCheckOut = () => {
-    const orderData = {
-      quantity: 1,
-      description: "macizo",
-      price: 100,
-    };
-    const config = {
-      headers: {
-        // encabezado personalizado
-        "Content-Type": "application/json",
-      },
-    };
-    const data = JSON.stringify(orderData);
-    axios.post("/payment", data, config);
-  };
+  // const handleCheckOut = () => {
+  //   const orderData = {
+  //     quantity: 1,
+  //     description: "macizo",
+  //     price: 100,
+  //   };
+  //   const config = {
+  //     headers: {
+  //       // encabezado personalizado
+  //       "Content-Type": "application/json",
+  //     },
+  //   };
+  //   const data = JSON.stringify(orderData);
+  //   axios.post("/payment", data, config);
+  // };
 
   const products = [
     {
@@ -120,7 +146,7 @@ const LandingPage = () => {
             cardTitle={product.title}
             cardText={product.text}
           >
-            <div className="button-checkout"></div>
+            <div className="cho-container"></div>
           </BluCard>
         ))}
       </main>
