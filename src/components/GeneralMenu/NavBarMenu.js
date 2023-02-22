@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import BluButton from '../Button/BluButton';
 
 function NavBarMenu() {
   return (
@@ -15,7 +16,7 @@ function NavBarMenu() {
             navbarScroll
           >
           </Nav>
-          <Form className="d-flex">
+          <Form className="d-flex ">
             <Form.Control
               type="search"
               placeholder="Search"
@@ -24,6 +25,7 @@ function NavBarMenu() {
             />
           </Form>
         </Navbar.Collapse>
+        <BluButton href="https://api.whatsapp.com/send?phone=0123456789" variant="success" text="Quieres ser donador?"/>
       </Container>
     </Navbar>
   );
