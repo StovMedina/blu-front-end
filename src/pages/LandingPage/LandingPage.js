@@ -3,31 +3,9 @@ import BluCard from "../../components/Cards/PrimaryCard/BluCard";
 import "./LandingPage.scss";
 // import axios from "axios";
 // import BluButton from "../../components/Button/BluButton";
-import { useEffect } from "react";
-import { useMercadopago } from "react-sdk-mercadopago";
+import { nanoid } from "nanoid";
 
 const LandingPage = () => {
-  const mercadopago = useMercadopago.v2(
-    "TEST-e877fe73-bb6a-45e5-adb6-de90b04f0862",
-    {
-      locale: "es-MX",
-    }
-  );
-
-  useEffect(() => {
-    if (mercadopago) {
-      mercadopago.checkout({
-        preference: {
-          id: "243699844-ed9ef249-2601-4517-b8a6-778d058216df",
-        },
-        render: {
-          container: ".cho-container",
-          label: "Pay",
-        },
-      });
-    }
-  }, [mercadopago]);
-
   // const [mp, setMp] = useState(null);
 
   // useEffect(() => {
@@ -140,6 +118,7 @@ const LandingPage = () => {
       <main className="landing-main__container">
         {products.map((product, index) => (
           <BluCard
+            id={nanoid()}
             key={index}
             variant="top"
             src={product.image}
