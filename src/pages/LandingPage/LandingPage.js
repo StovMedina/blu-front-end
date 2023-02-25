@@ -13,7 +13,7 @@ const LandingPage = () => {
 
   useEffect(() => {
     axios
-      .get("http://api.aanexo.com/products")
+      .get("https://api.aanexo.com/products")
       .then((res) => setData(res.data.payload));
   }, []);
 
