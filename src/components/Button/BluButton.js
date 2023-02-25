@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 const BluButton = (props) => {
   return (
     <div>
-      <Button variant={props.variant}>{props.text}</Button>
+      <Button href={props.href} variant={props.variant}>{props.text}</Button>
     </div>
   );
 };
