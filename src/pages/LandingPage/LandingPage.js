@@ -3,6 +3,8 @@ import BluCard from "../../components/Cards/PrimaryCard/BluCard";
 import "./LandingPage.scss";
 import { nanoid } from "nanoid";
 import axios from "axios";
+import BluButton from "../../components/Button/BluButton";
+import BluCartButton from "../../components/Button/BluCartButton";
 
 const LandingPage = () => {
   const [data, setData] = useState([]);
@@ -18,21 +20,28 @@ const LandingPage = () => {
 
   return (
     <div className="landing-container">
-      <main className="landing-main__container">
-        {data.length < 1 ? (
-          <div>cargando...</div>
-        ) : (
-          data.map((product, index) => (
-            <BluCard
-              id={product._id}
-              key={index}
-              variant="top"
-              src={product.image}
-              cardTitle={product.name}
-              cardText={product.description}
-            ></BluCard>
-          ))
-        )}
+      <main className="landing-main__container container-fluid">
+        <div className="row">
+          {data.length < 1 ? (
+            <div>cargando...</div>
+          ) : (
+            data.map((product, index) => (
+              <BluCard
+                className="col-12 col-md-6"
+                id={product._id}
+                key={index}
+                variant="top"
+                src={product.image}
+                cardTitle={product.name}
+                cardText={product.description}
+                children={[
+                  <BluButton text="comprame prro" />,
+                  <BluCartButton />,
+                ]}
+              ></BluCard>
+            ))
+          )}
+        </div>
       </main>
       <aside></aside>
     </div>
