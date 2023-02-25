@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import BluCard from "../../components/Cards/PrimaryCard/BluCard";
 import "./LandingPage.scss";
-import { nanoid } from "nanoid";
 import axios from "axios";
 import BluButton from "../../components/Button/BluButton";
 import BluCartButton from "../../components/Button/BluCartButton";
@@ -21,24 +20,23 @@ const LandingPage = () => {
   return (
     <div className="landing-container">
       <main className="landing-main__container container-fluid">
-        <div className="row">
+        <div className="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-4">
           {data.length < 1 ? (
             <div>cargando...</div>
           ) : (
             data.map((product, index) => (
-              <BluCard
-                className="col-12 col-md-6"
-                id={product._id}
-                key={index}
-                variant="top"
-                src={product.image}
-                cardTitle={product.name}
-                cardText={product.description}
-                children={[
-                  <BluButton text="comprame prro" />,
-                  <BluCartButton />,
-                ]}
-              ></BluCard>
+              <div className="col">
+                <BluCard
+                  extraClass="p-1"
+                  id={product._id}
+                  key={product._id}
+                  variant="top"
+                  src={product.image}
+                  cardTitle={product.name}
+                  cardText={product.description}
+                  children={<BluButton text="comprame prro" />}
+                ></BluCard>
+              </div>
             ))
           )}
         </div>

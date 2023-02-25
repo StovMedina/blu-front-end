@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 
 function BluCard(props) {
   return (
-    <Card className="card-product">
+    <Card className={`card-product ${props.extraClass}`}>
       <Card.Img variant={props.variant} src={props.src} />
       <Card.Body>
         <Card.Title>{props.cardTitle}</Card.Title>
