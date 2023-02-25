@@ -1,7 +1,8 @@
 import "./App.scss";
+import { AppRoute } from "./routes";
 
 function App() {
-  return <div className="App">hello world</div>;
+  return <AppRoute />;
 }
 
 export default App;
