@@ -1,75 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BluCard from "../../components/Cards/PrimaryCard/BluCard";
 import "./LandingPage.scss";
 import { nanoid } from "nanoid";
+import axios from "axios";
 
 const LandingPage = () => {
-  const data = require("../../MOCK_DATA (1).json");
+  const [data, setData] = useState([]);
 
-  // const products = [
-  //   {
-  //     image:
-  //       "https://images.pexels.com/photos/1176618/pexels-photo-1176618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  //     title: "Chamarra de mezclilla con bordado",
-  //     text: "Chamarra con un lindo bordado motivador",
-  //   },
-  //   {
-  //     image:
-  //       "https://images.pexels.com/photos/1040424/pexels-photo-1040424.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  //     title: "Hoodie para correr",
-  //     text: "Hoodie ligera ideal para trotar",
-  //   },
-  //   {
-  //     image:
-  //       "https://images.pexels.com/photos/3236651/pexels-photo-3236651.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  //     title: "Pareo ligero",
-  //     text: "Pareo ligero con estampado",
-  //   },
-  //   {
-  //     image:
-  //       "https://images.pexels.com/photos/1024036/pexels-photo-1024036.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  //     title: "Vestido vaporoso de primavera",
-  //     text: "Vestido con estampado floral",
-  //   },
-  //   {
-  //     image:
-  //       "https://images.pexels.com/photos/1176618/pexels-photo-1176618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  //     title: "Chamarra de mezclilla con bordado",
-  //     text: "Chamarra con un lindo bordado motivador",
-  //   },
-  //   {
-  //     image:
-  //       "https://images.pexels.com/photos/1040424/pexels-photo-1040424.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  //     title: "Hoodie para correr",
-  //     text: "Hoodie ligera ideal para trotar",
-  //   },
-  //   {
-  //     image:
-  //       "https://images.pexels.com/photos/3236651/pexels-photo-3236651.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  //     title: "Pareo ligero",
-  //     text: "Pareo ligero con estampado",
-  //   },
-  //   {
-  //     image:
-  //       "https://images.pexels.com/photos/1024036/pexels-photo-1024036.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  //     title: "Vestido vaporoso de primavera",
-  //     text: "Vestido con estampado floral",
-  //   },
-  // ];
+  useEffect(() => {
+    axios
+      .get(
+        "https://9b76-2806-108e-13-2ed8-bf19-495e-d4cd-6642.ngrok.io/products",
+        { headers: { "ngrok-skip-browser-warning": true } }
+      )
+      .then((res) => setData(res.data.payload));
+  }, []);
 
   return (
     <div className="landing-container">
       <main className="landing-main__container">
-        {data.map((data, index) => (
-          <BluCard
-            id={nanoid()}
-            key={index}
-            variant="top"
-            src={data.image}
-            cardTitle={data.name}
-            cardText={data.description}
-          ></BluCard>
-        ))}
+        {data.length < 1 ? (
+          <div>cargando...</div>
+        ) : (
+          data.map((product, index) => (
+            <BluCard
+              id={product._id}
+              key={index}
+              variant="top"
+              src={product.image}
+              cardTitle={product.name}
+              cardText={product.description}
+            ></BluCard>
+          ))
+        )}
       </main>
       <aside></aside>
     </div>
