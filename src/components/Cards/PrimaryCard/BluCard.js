@@ -3,12 +3,16 @@ import Card from "react-bootstrap/Card";
 
 function BluCard(props) {
   return (
-    <Card>
+    <Card
+      className={`card-product ${props.extraClass}`}
+      onClick={props.actionOnClick}
+    >
       <Card.Img variant={props.variant} src={props.src} />
       <Card.Body>
         <Card.Title>{props.cardTitle}</Card.Title>
         <Card.Text>{props.cardText}</Card.Text>
         {props.children}
+        <div id={props.id}></div>
       </Card.Body>
     </Card>
   );

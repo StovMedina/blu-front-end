@@ -1,12 +1,13 @@
-import React from 'react'
-import SideBarMenu from '../../components/GeneralMenu/SideBarMenu'
+import React from "react";
+//import SideBarMenu from "../../components/GeneralMenu/SideBarMenu";
 
 const Product = () => {
   return (
-    <div>Product
-        <SideBarMenu/>
+    <div>
+      {/* <SideBarMenu /> */}
+      products
     </div>
-  )
-}
+  );
+};
 
-export default Product
+export default Product;

@@ -2,8 +2,7 @@ import "./App.scss";
 import { AppRoute } from "./routes";
 
 function App() {
-  return   <AppRoute /> ;
-  
+  return <AppRoute />;
 }
 
 export default App;
