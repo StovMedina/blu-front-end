@@ -13,10 +13,7 @@ const LandingPage = () => {
 
   useEffect(() => {
     axios
-      .get(
-        "https://5844-2806-108e-13-2ed8-bf19-495e-d4cd-6642.ngrok.io/products",
-        { headers: { "ngrok-skip-browser-warning": true } }
-      )
+      .get("http://api.aanexo.com/products")
       .then((res) => setData(res.data.payload));
   }, []);
 
