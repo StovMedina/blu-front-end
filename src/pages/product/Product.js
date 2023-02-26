@@ -4,17 +4,27 @@ import BluButton from "../../components/Button/BluButton";
 import BluCartButton from "../../components/Button/BluCartButton";
 import apiURL from "../../config";
 import { useParams } from "react-router";
+import { useNavigate } from "react-router";
 
 const Product = () => {
   const [data, setData] = useState([]);
 
   const { id } = useParams();
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios
       .get(`${apiURL}/products/${id}`)
       .then((res) => setData(res.data.payload));
   }, []);
+
+  const handleCheckOut = (id) => {
+    const idForCheckOut = { id: [id] };
+    axios
+      .post(`${apiURL}/payment`, idForCheckOut)
+      .then((res) => window.location.replace(res.data.payload.body.init_point));
+  };
 
   return (
     <div className="container">
@@ -42,7 +52,11 @@ const Product = () => {
             <p>{data.description}</p>
             <div className="buttons-container d-flex flex-column justify-content-center align-items-center g-5">
               <BluCartButton extraClass="m-4" />
-              <BluButton extraClass="m-4" text="paga prro" />
+              <BluButton
+                actionOnClick={() => handleCheckOut(id)}
+                extraClass="m-4"
+                text="paga prro"
+              />
             </div>
           </div>
         </div>
