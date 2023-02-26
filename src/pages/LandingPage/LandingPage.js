@@ -5,6 +5,7 @@ import axios from "axios";
 import BluButton from "../../components/Button/BluButton";
 import BluCartButton from "../../components/Button/BluCartButton";
 import { useNavigate } from "react-router-dom";
+import apiURL from "../../config";
 
 const LandingPage = () => {
   const [data, setData] = useState([]);
@@ -12,9 +13,7 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get("https://api.aanexo.com/products")
-      .then((res) => setData(res.data.payload));
+    axios.get(`${apiURL}/products`).then((res) => setData(res.data.payload));
   }, []);
 
   const handleClick = (id) => {
