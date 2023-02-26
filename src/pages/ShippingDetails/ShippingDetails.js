@@ -10,7 +10,8 @@ const ShippingDetails = () => {
     <div>
     
       <main className="container">
-      
+      <h1 className="text-center mb-3">Datos de Entrega</h1>
+      <div className="empty-container"></div>
         <Form className="row">
           <BluInput
             extraClasses="col-12 col-md-8"
