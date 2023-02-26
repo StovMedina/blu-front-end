@@ -2,15 +2,17 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import BluButton from "../../components/Button/BluButton";
 import BluCartButton from "../../components/Button/BluCartButton";
+import apiURL from "../../config";
+import { useParams } from "react-router";
 
 const Product = () => {
   const [data, setData] = useState([]);
 
+  const { id } = useParams();
+
   useEffect(() => {
     axios
-      .get(
-        "https://5844-2806-108e-13-2ed8-bf19-495e-d4cd-6642.ngrok.io/products"
-      )
+      .get(`${apiURL}/products/${id}`)
       .then((res) => setData(res.data.payload));
   }, []);
 
@@ -34,16 +36,13 @@ const Product = () => {
           </div>
         </div>
         <div className="product-details col-6">
-          <div className="d-flex flex-column justify-content-center align-items-center">
-            <h2>chamarra mamalona</h2>
-            <h4>chirrion de dolares</h4>
-            <p>
-              ASDAKLÑSDKAÑLSDAÑLÑLDAÑLSDKASLÑDKASÑLDKASDÑLS
-              ASKDJASKLDASDASJDKLASJDASLKDASKDJASDLASJDAKLSDJAKLS ASKLDJAKLSD
-            </p>
+          <div className="d-flex flex-column justify-content-center align-items-center text-center">
+            <h2>{data.name}</h2>
+            <h4>{data.price}</h4>
+            <p>{data.description}</p>
             <div className="buttons-container d-flex flex-column justify-content-center align-items-center g-5">
-              <BluButton extraClass="m-5" text="paga prro" />
-              <BluCartButton />
+              <BluCartButton extraClass="m-4" />
+              <BluButton extraClass="m-4" text="paga prro" />
             </div>
           </div>
         </div>
