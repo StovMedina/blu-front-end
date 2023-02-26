@@ -29,23 +29,23 @@ const Product = () => {
   return (
     <div className="container">
       <main className="product-container row">
-        <div className="product-picture container col-6">
+        <div className="product-picture container col-sm-12 col-md-6 col-lg-6">
           <div className="row">
             <img
-              className="col-12 g-2"
+              className="col-4 col-md-12 g-2"
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Blackpink_PUBG_210321.jpg/800px-Blackpink_PUBG_210321.jpg"
             />
             <img
-              className="col-6 g-2"
+              className="col-4 col-md-6 g-2"
               src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/blackpink-born-pink-1663323431.jpg?crop=1.00xw:1.00xh;0,0&resize=980:*"
             />
             <img
-              className="col-6 g-2"
+              className="col-4 col-md-6 g-2"
               src="https://imgmedia.larepublica.pe/640x377/larepublica/original/2022/06/10/62a3ab0c4b9eb81b6563ae77.webp"
             />
           </div>
         </div>
-        <div className="product-details col-6">
+        <div className="product-details col-sm-12 col-md-6 col-lg-6">
           <div className="d-flex flex-column justify-content-center align-items-center text-center">
             <h2>{data.name}</h2>
             <h4>{data.price}</h4>
