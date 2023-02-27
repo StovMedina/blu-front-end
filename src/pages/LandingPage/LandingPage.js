@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import BluCard from "../../components/Cards/PrimaryCard/BluCard";
 import "./LandingPage.scss";
 import axios from "axios";
@@ -7,6 +7,8 @@ import BluCartButton from "../../components/Button/BluCartButton";
 import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
+  const cartContext = React.createContext();
+
   const [data, setData] = useState([]);
 
   const navigate = useNavigate();
@@ -19,6 +21,21 @@ const LandingPage = () => {
 
   const handleClick = (id) => {
     navigate(`/product/${id}`);
+  };
+
+  const handleCart = (id) => {
+    let cart = localStorage.getItem("cart");
+    if (cart) {
+      cart = JSON.parse(cart);
+      if (cart.includes(id)) return;
+      cart.push(id);
+    } else {
+      cart = [];
+      if (cart.includes(id)) return;
+      cart.push(id);
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
   };
 
   return (
@@ -39,8 +56,11 @@ const LandingPage = () => {
                   src={product.image}
                   cardTitle={product.name}
                   cardText={product.description}
-                  children={<BluButton text="comprame prro" />}
+                  children={[<BluButton text="comprame prro" />]}
                 ></BluCard>
+                <BluCartButton
+                  actionOnClick={() => handleCart(product._id)}
+                ></BluCartButton>
               </div>
             ))
           )}

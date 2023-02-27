@@ -1,4 +1,8 @@
 .card-product {
+  .card-image__land {
+    object-fit: contain;
+    aspect-ratio: 3 / 2;
+  }
   &:hover {
     cursor: pointer;
   }
