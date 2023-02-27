@@ -45,17 +45,18 @@ const LandingPage = () => {
             <div>cargando...</div>
           ) : (
             data.map((product, index) => (
-              <div className="col">
+              <div className="col" key={index}>
                 <BluCard
                   actionOnClick={() => handleClick(product._id)}
                   extraClass="p-1"
                   id={product._id}
-                  key={product._id}
                   variant="top"
                   src={product.image}
                   cardTitle={product.name}
                   cardText={product.description}
-                  children={[<BluButton text="comprame prro" />]}
+                  children={[
+                    <BluButton key={product._id} text="comprame prro" />,
+                  ]}
                 ></BluCard>
                 <BluCartButton
                   actionOnClick={() => handleCart(product._id)}

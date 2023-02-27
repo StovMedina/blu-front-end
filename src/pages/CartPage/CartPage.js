@@ -9,7 +9,6 @@ const CartPage = () => {
 
   useEffect(() => {
     const idForCheckOut = { id: cartToJson };
-    console.log(idForCheckOut);
     axios
       .get(`https://api.aanexo.com/products/cart/id=${idForCheckOut.id}`)
       .then((res) => setData(res.data.payload));
@@ -20,8 +19,8 @@ const CartPage = () => {
       {data.length < 1 ? (
         <div>cargando...</div>
       ) : (
-        data.map((product, index) => (
-          <div className="">
+        data.map((product) => (
+          <div className="" key={product._id}>
             <CartCard
               image={product.image}
               name={product.name}
