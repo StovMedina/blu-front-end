@@ -3,29 +3,34 @@ import React, { useEffect, useState } from "react";
 import CartCard from "../../components/Cards/CartCard/CartCard";
 
 const CartPage = () => {
+  const cartStorage = localStorage.getItem("cart");
+  const cartToJson = JSON.parse(cartStorage);
   const [data, setData] = useState([]);
 
-  const cartStorage = localStorage.getItem("cart");
-
-  const cartToJson = JSON.parse(cartStorage);
-
-  const cart = { id: cartToJson };
-
   useEffect(() => {
-    console.log(cart);
+    const idForCheckOut = { id: cartToJson };
+    console.log(idForCheckOut);
     axios
-      .get("https://api.aanexo.com/payment", {
-        data: {
-          id: ["1"],
-        },
-        headers: { "Content-Type": "application/json" },
-      })
-      .then((res) => console.log(res));
+      .get(`https://api.aanexo.com/products/cart/id=${idForCheckOut.id}`)
+      .then((res) => setData(res.data.payload));
   }, []);
 
   return (
     <div>
-      <CartCard />
+      {data.length < 1 ? (
+        <div>cargando...</div>
+      ) : (
+        data.map((product, index) => (
+          <div className="">
+            <CartCard
+              image={product.image}
+              name={product.name}
+              size={product.size}
+              price={product.price}
+            />
+          </div>
+        ))
+      )}
     </div>
   );
 };
