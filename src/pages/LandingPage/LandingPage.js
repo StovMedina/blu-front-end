@@ -20,6 +20,21 @@ const LandingPage = () => {
     navigate(`/product/${id}`);
   };
 
+  const handleCart = (id) => {
+    let cart = localStorage.getItem("cart");
+    if (cart) {
+      cart = JSON.parse(cart);
+      if (cart.includes(id)) return;
+      cart.push(id);
+    } else {
+      cart = [];
+      if (cart.includes(id)) return;
+      cart.push(id);
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
   return (
     <div className="landing-container">
       <main className="landing-main__container container-fluid">
@@ -28,18 +43,20 @@ const LandingPage = () => {
             <div>cargando...</div>
           ) : (
             data.map((product, index) => (
-              <div className="col">
+              <div className="col" key={index}>
                 <BluCard
                   actionOnClick={() => handleClick(product._id)}
                   extraClass="p-1"
                   id={product._id}
-                  key={product._id}
                   variant="top"
                   src={product.image}
                   cardTitle={product.name}
                   cardText={product.description}
-                  children={<BluButton text="comprame prro" />}
+                  children={[<BluButton key={product._id} text="Comprar" />]}
                 ></BluCard>
+                <BluCartButton
+                  actionOnClick={() => handleCart(product._id)}
+                ></BluCartButton>
               </div>
             ))
           )}
