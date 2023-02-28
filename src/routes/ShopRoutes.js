@@ -6,6 +6,8 @@ import Product from "../pages/product/Product";
 import ShippingDetails from "../pages/ShippingDetails/ShippingDetails";
 import ProductCheckout from "../pages/ProductsCheckOut/ProductCheckout";
 import Ordercomplet from "../pages/Ordercompleted/Ordercomplet";
+import CartPage from "../pages/CartPage/CartPage";
+
 export const ShopRoutes = () => {
   return (
     <ShopLayout>

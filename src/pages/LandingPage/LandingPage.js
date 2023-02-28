@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import BluCard from "../../components/Cards/PrimaryCard/BluCard";
 import "./LandingPage.scss";
 import axios from "axios";
@@ -8,8 +8,6 @@ import { useNavigate } from "react-router-dom";
 import apiURL from "../../config";
 
 const LandingPage = () => {
-  const cartContext = React.createContext();
-
   const [data, setData] = useState([]);
 
   const navigate = useNavigate();

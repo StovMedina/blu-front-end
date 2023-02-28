@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import CartCard from "../../components/Cards/CartCard/CartCard";
 
 const CartPage = () => {
-  const cartStorage = localStorage.getItem("cart");
-  const cartToJson = JSON.parse(cartStorage);
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    const cartStorage = localStorage.getItem("cart");
+    const cartToJson = JSON.parse(cartStorage);
     const idForCheckOut = { id: cartToJson };
     axios
       .get(`https://api.aanexo.com/products/cart/id=${idForCheckOut.id}`)

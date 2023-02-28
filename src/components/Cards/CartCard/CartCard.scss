@@ -1,0 +1,10 @@
+.cart-card-container {
+  width: 400px;
+  height: 60px;
+  border: 1px solid grey;
+  .cart-card-image {
+    height: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: contain;
+  }
+}
