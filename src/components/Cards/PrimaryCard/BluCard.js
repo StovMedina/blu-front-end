@@ -7,7 +7,11 @@ function BluCard(props) {
       className={`card-product ${props.extraClass}`}
       onClick={props.actionOnClick}
     >
-      <Card.Img variant={props.variant} src={props.src} />
+      <Card.Img
+        className="card-image"
+        variant={props.variant}
+        src={props.src}
+      />
       <Card.Body>
         <Card.Title>{props.cardTitle}</Card.Title>
         <Card.Text>{props.cardText}</Card.Text>
