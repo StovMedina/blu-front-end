@@ -52,9 +52,7 @@ const LandingPage = () => {
                   src={product.image}
                   cardTitle={product.name}
                   cardText={product.description}
-                  children={[
-                    <BluButton key={product._id} text="comprame prro" />,
-                  ]}
+                  children={[<BluButton key={product._id} text="Comprar" />]}
                 ></BluCard>
                 <BluCartButton
                   actionOnClick={() => handleCart(product._id)}

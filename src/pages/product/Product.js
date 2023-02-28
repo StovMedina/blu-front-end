@@ -4,20 +4,17 @@ import BluButton from "../../components/Button/BluButton";
 import BluCartButton from "../../components/Button/BluCartButton";
 import apiURL from "../../config";
 import { useParams } from "react-router";
-import { useNavigate } from "react-router";
 
 const Product = () => {
   const [data, setData] = useState([]);
 
   const { id } = useParams();
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     axios
       .get(`${apiURL}/products/${id}`)
       .then((res) => setData(res.data.payload));
-  }, []);
+  }, [id]);
 
   const handleCheckOut = (id) => {
     const idForCheckOut = { id: [id] };
@@ -34,14 +31,17 @@ const Product = () => {
             <img
               className="col-12 g-2"
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Blackpink_PUBG_210321.jpg/800px-Blackpink_PUBG_210321.jpg"
+              alt="cargando..."
             />
             <img
               className="col-6 g-2"
               src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/blackpink-born-pink-1663323431.jpg?crop=1.00xw:1.00xh;0,0&resize=980:*"
+              alt="cargando..."
             />
             <img
               className="col-6 g-2"
               src="https://imgmedia.larepublica.pe/640x377/larepublica/original/2022/06/10/62a3ab0c4b9eb81b6563ae77.webp"
+              alt="cargando..."
             />
           </div>
         </div>
@@ -55,7 +55,7 @@ const Product = () => {
               <BluButton
                 actionOnClick={() => handleCheckOut(id)}
                 extraClass="m-4"
-                text="paga prro"
+                text="Pagar"
               />
             </div>
           </div>
