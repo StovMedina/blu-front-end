@@ -7,6 +7,7 @@ import ShippingDetails from "../pages/ShippingDetails/ShippingDetails";
 import ProductCheckout from "../pages/ProductsCheckOut/ProductCheckout";
 import Ordercomplet from "../pages/Ordercompleted/Ordercomplet";
 import CartPage from "../pages/CartPage/CartPage";
+import SingUpForm from "../pages/SingUp/SingUpForm";
 
 export const ShopRoutes = () => {
   return (
@@ -18,6 +19,7 @@ export const ShopRoutes = () => {
         <Route path="/shippingdetails" element={<ShippingDetails />} />
         <Route path="/productcheckout" element={<ProductCheckout />} />
         <Route path="/ordercompleted" element={<Ordercomplet />} />
+        <Route path="/singupform" element={<SingUpForm />} />
       </Routes>
     </ShopLayout>
   );
