@@ -5,6 +5,8 @@ const BluButton = (props) => {
   return (
     <div>
       <Button
+        type={props.type}
+        onSubmit={props.actionOnSubmit}
         onClick={props.actionOnClick}
         className={props.extraClass}
         href={props.href}
