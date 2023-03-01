@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import BluButton from "../../components/Button/BluButton";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import BluInput from "../../components/Forms/BluInput";
 import axios from "axios";
 import apiURL from "../../config";
 
-
 const SingUpForm = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     userName: "",
     email: "",
@@ -16,11 +15,13 @@ const SingUpForm = () => {
     confirmPassword: "",
   });
 
-  const handleSubmit = async ()=> {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
       if (formData.password === formData.confirmPassword) {
+        delete formData.confirmPassword;
         const response = await axios.post(`${apiURL}/users`, formData);
-        console.log(response.data);
+        if (response.data.payload.id) navigate("/");
       } else {
         console.log("Contraseña invalida");
       }
@@ -37,7 +38,7 @@ const SingUpForm = () => {
   };
   return (
     <main>
-      <Form onSubmit={()=> handleSubmit()}>
+      <Form onSubmit={handleSubmit}>
         <BluInput
           extraClass="col-12 col-md-6"
           type="text"
