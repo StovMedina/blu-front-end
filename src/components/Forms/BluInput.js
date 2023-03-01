@@ -15,7 +15,7 @@ const BluInput = (props) => {
         placeholder={props.placeholder}
         value={props.value}
       />
-      <Form.Text className="text-muted">{props.text}</Form.Text>
+      <Form.Text className="text-danger">{props.text}</Form.Text>
     </Form.Group>
   );
 };

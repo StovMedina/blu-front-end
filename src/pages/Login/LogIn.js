@@ -9,7 +9,6 @@ import schema from "../../schemas/loginSchema";
 
 const LogIn = () => {
   const handleOnSubmit = (values) => {
-    debugger;
     console.log(values);
   };
 
@@ -47,18 +46,22 @@ const LogIn = () => {
               placeholder="E-mail"
               value={formik.values.email}
               actionOnChange={formik.handleChange}
+              text={formik.errors.email}
             />
             <BluInput
               name="password"
               label="Ahora sigue tu contraseña"
               type="password"
               placeholder="password"
-              text="Los datos introducidos serán resguardados de la mejor manera"
+              text={formik.errors.password}
               value={formik.values.password}
               actionOnChange={formik.handleChange}
             />
-            <BluButton text="Login" type="submit" />
-            <button type="submit">login</button>
+            <BluButton
+              text="Login"
+              type="submit"
+              href="https://api.aanexo.com/users/sign-up"
+            />
           </Form>
         </div>
       </div>
