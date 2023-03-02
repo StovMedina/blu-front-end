@@ -24,7 +24,7 @@ const LogIn = () => {
   });
 
   const handleGoogle = () => {
-    axios.get(`${apiURL}/users/sign-up`).then((res) => console.log(res));
+    window.location.replace(`${apiURL}/login`);
   };
 
   return (
