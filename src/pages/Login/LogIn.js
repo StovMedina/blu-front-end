@@ -4,8 +4,29 @@ import { Form } from "react-bootstrap";
 import BluButton from "../../components/Button/BluButton";
 import loginSvg from "../../../src/media/login.svg";
 import BluIlustration from "../../components/Images/BluIlustration";
+import { useFormik } from "formik";
+import schema from "../../schemas/loginSchema";
+import apiURL from "../../config";
+import axios from "axios";
 
 const LogIn = () => {
+  const handleOnSubmit = (values) => {
+    axios.post(`${apiURL}/users/auth`, values);
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: schema,
+    onSubmit: handleOnSubmit,
+  });
+
+  const handleGoogle = () => {
+    axios.get(`${apiURL}/users/sign-up`);
+  };
+
   return (
     <div className="container-fluid login-container d-flex flex-column justify-content-center">
       <div className="row">
@@ -13,20 +34,32 @@ const LogIn = () => {
           <BluIlustration src={loginSvg} alt="loading" />
         </div>
         <div className="col-12 col-lg-6 d-flex flex-column justify-content-center align-items-center">
-          <Form className="w-100">
+          <Form className="w-100" onSubmit={formik.handleSubmit}>
             <BluInput
+              name="email"
               label="Escribe tu e-mail"
               type="email"
               placeholder="E-mail"
+              value={formik.values.email}
+              actionOnChange={formik.handleChange}
+              text={formik.errors.email}
             />
             <BluInput
+              name="password"
               label="Ahora sigue tu contraseña"
               type="password"
               placeholder="password"
-              text="Los datos introducidos serán resguardados de la mejor manera"
+              text={formik.errors.password}
+              value={formik.values.password}
+              actionOnChange={formik.handleChange}
             />
-            <BluButton text="Login" />
+            <BluButton text="Login" type="submit" />
           </Form>
+          <BluButton
+            text="accede con gugul"
+            type="button"
+            actionOnClick={handleGoogle}
+          />
         </div>
       </div>
     </div>
