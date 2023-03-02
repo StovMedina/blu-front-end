@@ -17,8 +17,7 @@ const SingUpForm = () => {
   //   password: "",
   //   confirmPassword: "",
   // });
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
     try {
       if (formik.values.password === formik.values.confirmPassword) {
         delete formik.values.confirmPassword;
@@ -60,7 +59,7 @@ const SingUpForm = () => {
   return (
     <main>
       <Form onSubmit={formik.handleSubmit}>
-        {/* <BluInput
+        <BluInput
           extraClass="col-12 col-md-6"
           type="text"
           placeholder="nombre de usuario  "
@@ -99,7 +98,7 @@ const SingUpForm = () => {
           value={formik.values.confirmPassword}
           text={formik.errors.confirmPassword}
           actionOnChange={formik.handleChange}
-        /> */}
+        />
         <BluButton
           extraClass="ms-5"
           variant="primary"
