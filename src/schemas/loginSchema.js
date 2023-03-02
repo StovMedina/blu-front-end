@@ -8,9 +8,7 @@ const schema = yup.object().shape({
     .string()
     .email("El email no es valido")
     .required("Introduce un email valido")
-    .matches(emailRules,
-      "Debes acceder con un correo valido"
-      ),
+    .matches(emailRules),
   password: yup
     .string()
     .required("Por favor, introduce tu contraseña")
