@@ -11,7 +11,6 @@ const BluButton = (props) => {
         className={props.extraClass}
         href={props.href}
         variant={props.variant}
-        type={props.type}
       >
         {props.text}
       </Button>

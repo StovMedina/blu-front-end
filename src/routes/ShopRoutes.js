@@ -19,7 +19,7 @@ export const ShopRoutes = () => {
         {/* <Route path="/shippingdetails" element={<ShippingDetails />} /> */}
         <Route path="/productcheckout" element={<ProductCheckout />} />
         <Route path="/ordercompleted" element={<Ordercomplet />} />
-        <Route path="/singupform" element={<SingUpForm />} />
+        {/* <Route path="/singupform" element={<SingUpForm />} /> */}
       </Routes>
     </ShopLayout>
   );
