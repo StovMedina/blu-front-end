@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import BluInput from "../../components/Forms/BluInput";
 import { Form } from "react-bootstrap";
 import BluButton from "../../components/Button/BluButton";
@@ -8,10 +8,26 @@ import { useFormik } from "formik";
 import schema from "../../schemas/loginSchema";
 import apiURL from "../../config";
 import axios from "axios";
+import { useNavigate } from "react-router";
+import jwtDecode from "jwt-decode";
 
 const LogIn = () => {
+  const navigate = useNavigate();
+
+  const decodeToken = (token) => {
+    const decode = jwtDecode(token);
+    if (decode.isAdmin === true) {
+      navigate("/admin");
+    } else {
+      navigate("/");
+    }
+  };
+
   const handleOnSubmit = (values) => {
-    axios.post(`${apiURL}/users/auth`, values);
+    axios
+      .post(`${apiURL}/users/auth`, values)
+      .then((res) => localStorage.setItem("token", res.data.token))
+      .then(() => decodeToken(localStorage.getItem("token")));
   };
 
   const formik = useFormik({
