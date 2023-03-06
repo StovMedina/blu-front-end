@@ -2,6 +2,10 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 
 const BluTable = ({ data }) => {
+  if (!data || data.length === 0) {
+    return <p>No hay información disponible</p>;
+  }
+
   return (
     <Table striped bordered hover>
       <thead>
