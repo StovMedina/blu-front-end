@@ -1,10 +1,9 @@
-import React, {useState} from 'react'
-import axios from 'axios'
+import React, { useState } from "react";
+import axios from "axios";
 import { Form } from "react-bootstrap";
-import BluInput from '../Forms/BluInput';
-import BluButton from '../Button/BluButton';
+import BluInput from "../Forms/BluInput";
+import BluButton from "../Button/BluButton";
 import apiURL from "../../config";
-
 
 const AddProductForm = () => {
   const [product, setProduct] = useState({
@@ -18,56 +17,56 @@ const AddProductForm = () => {
     quantity: 0,
     price: 0,
     description: "",
-  });
-const handleChange = (event) => {
-  const { name, value } = event.target;
-  setProduct((prevProduct) => ({ ...prevProduct, [name]: value }));
-};
+  });
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setProduct((prevProduct) => ({ ...prevProduct, [name]: value }));
+  };
 
-const handleSubmit = (event) => {
-  event.preventDefault();
-  console.log(product)
-  axios.post(`${apiURL}/products`, product)
-    .catch((error) => console.error(error));
-  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post(`${apiURL}/products`, product)
+      .catch((error) => console.error(error));
+  };
   return (
     <Form onSubmit={handleSubmit}>
-     <BluInput
-     label="Nombre del producto" 
-    type="text"
-    name="name"
-    value={product.name}
-    actionOnChange={handleChange}
-     />
-<BluInput
+      <BluInput
+        label="Nombre del producto"
+        type="text"
+        name="name"
+        value={product.name}
+        actionOnChange={handleChange}
+      />
+      <BluInput
         label="Talla"
         name="size"
         type="text"
         value={product.size}
         actionOnChange={handleChange}
       />
-<BluInput
+      <BluInput
         label="Marca"
         name="brand"
         type="text"
         value={product.brand}
         actionOnChange={handleChange}
       />
-<BluInput
+      <BluInput
         label="Detalles de reparacion"
         name="reparationDetails"
         type="text"
         value={product.reparationDetails}
         actionOnChange={handleChange}
       />
-  <BluInput
+      <BluInput
         label="Color"
         name="color"
         type="text"
         value={product.color}
         actionOnChange={handleChange}
       />
-    <BluInput
+      <BluInput
         label="Imagen"
         name="image"
         type="text"
@@ -95,13 +94,10 @@ const handleSubmit = (event) => {
         value={product.description}
         actionOnChange={handleChange}
       />
-    <BluButton
-    type="submit"
-    text="Guardar"
-      />
-    </Form>
-    
-  )
+      <BluButton type="submit" text="Guardar" />
+          
+    </Form>
+  );
 };
 
-export default AddProductForm
+export default AddProductForm;
