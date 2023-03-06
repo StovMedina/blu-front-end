@@ -4,12 +4,11 @@ import BluTable from "../Tables/BluTable";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const AdminTable = () => {
+const AdminTable = (props) => {
   const [dashboardData, setDashboardData] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log(token);
     axios
       .get(`${apiURL}/users`, {
         headers: { authorization: token },
@@ -19,7 +18,7 @@ const AdminTable = () => {
   }, []);
 
   return (
-    <div>
+    <div className={props.extraClass}>
       <BluTable data={dashboardData} />
     </div>
   );
