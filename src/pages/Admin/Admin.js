@@ -19,7 +19,6 @@ const Admin = () => {
     let name = params.get("link");
     setUrlParamName(name);
   };
-  console.log(showComponent);
   const sideBarOptions = [
     {
       key: 1,
