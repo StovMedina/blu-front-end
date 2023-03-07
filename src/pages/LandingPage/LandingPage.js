@@ -17,7 +17,7 @@ const LandingPage = () => {
   }, []);
 
   const handleClick = (id) => {
-    navigate(`/product/${id}`);
+    navigate(`/blu/product/${id}`);
   };
 
   const handleCart = (id) => {

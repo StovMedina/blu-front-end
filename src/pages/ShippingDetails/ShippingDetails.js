@@ -8,10 +8,9 @@ const ShippingDetails = () => {
   const navigate = useNavigate();
   return (
     <div>
-    
       <main className="container">
-      <h1 className="text-center mb-3">Datos de Entrega</h1>
-      <div className="empty-container"></div>
+        <h1 className="text-center mb-3">Datos de Entrega</h1>
+        <div className="empty-container"></div>
         <Form className="row">
           <BluInput
             extraClasses="col-12 col-md-8"
@@ -65,9 +64,7 @@ const ShippingDetails = () => {
             placeholder="Estado"
           />
           <div className="col-12 d-flex align-items-center justify-content-end">
-            <span onClick={() => navigate("/")}>
-              Cancelar
-            </span>
+            <span onClick={() => navigate("/")}>Cancelar</span>
             <BluButton
               extraClass="ms-5"
               actionOnClick={() => navigate("/")}
