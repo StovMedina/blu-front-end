@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { ShopLayout } from "../components/layouts";
 import ShippingDetails from "../pages/ShippingDetails/ShippingDetails";

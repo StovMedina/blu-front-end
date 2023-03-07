@@ -18,7 +18,7 @@ export const AppRoute = () => {
         setUserRol("client");
       }
     }
-  }, [userRol]);
+  }, [userRol, token]);
 
   return (
     <BrowserRouter>
