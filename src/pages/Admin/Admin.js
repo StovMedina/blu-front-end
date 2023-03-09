@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Nav from "react-bootstrap/Nav";
 import AdminTable from "../../components/TableProducts/AdminTable";
+import OrdersTable from "../../components/TableProducts/OrdersTable";
 import ProductsAdmin from "../../components/TableProducts/ProductsAdmin";
 
 const Admin = () => {
@@ -70,6 +71,8 @@ const Admin = () => {
           <ProductsAdmin />
         ) : showComponent === "users" ? (
           <AdminTable />
+        ) : showComponent === "orders" ? (
+          <OrdersTable />
         ) : (
           <div>No Info</div>
         )}
