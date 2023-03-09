@@ -24,7 +24,7 @@ export const AppRoute = () => {
     <BrowserRouter>
       <Routes>
         {userRol === "admin" ? (
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/" element={<Admin />} />
         ) : (
           <Route path="/shop/*" element={<ShopRoutes />} />
         )}

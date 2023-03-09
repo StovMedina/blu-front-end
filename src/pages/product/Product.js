@@ -3,9 +3,11 @@ import axios from "axios";
 import BluButton from "../../components/Button/BluButton";
 import BluCartButton from "../../components/Button/BluCartButton";
 import apiURL from "../../config";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 const Product = () => {
+  const navigate = useNavigate();
+
   const [data, setData] = useState([]);
 
   const { id } = useParams();
@@ -17,10 +19,25 @@ const Product = () => {
   }, [id]);
 
   const handleCheckOut = (id) => {
-    const idForCheckOut = { id: [id] };
-    axios
-      .post(`${apiURL}/payment`, idForCheckOut)
-      .then((res) => window.location.replace(res.data.payload.body.init_point));
+    let cart = localStorage.getItem("cart");
+    if (cart) {
+      cart = JSON.parse(cart);
+      if (cart.includes(id)) {
+        navigate("/shop/shippingdetails");
+        return;
+      }
+      cart.push(id);
+    } else {
+      cart = [];
+      if (cart.includes(id)) {
+        navigate("/shop/shippingdetails");
+        return;
+      }
+      cart.push(id);
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    navigate("/shop/shippingdetails");
   };
 
   return (
@@ -55,7 +72,7 @@ const Product = () => {
               <BluButton
                 actionOnClick={() => handleCheckOut(id)}
                 extraClass="m-4"
-                text="Pagar"
+                text="Pasar a comprar"
               />
             </div>
           </div>

@@ -33,7 +33,7 @@ function NavBarMenu() {
           variant="success"
           text="Quieres ser donador?"
         />
-        <BluCartButton actionOnClick={() => navigate("/cart")} />
+        <BluCartButton actionOnClick={() => navigate("/blu/cart")} />
         <BluUserButton />
       </Container>
     </Navbar>

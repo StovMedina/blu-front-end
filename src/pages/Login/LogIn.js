@@ -19,7 +19,7 @@ const LogIn = () => {
     if (decode.isAdmin === true) {
       navigate("/admin");
     } else {
-      navigate("/blu/");
+      navigate(-2);
     }
   };
 
