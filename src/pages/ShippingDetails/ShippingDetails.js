@@ -14,6 +14,8 @@ const ShippingDetails = () => {
 
   const [cartCheck, setCartCheck] = useState("");
 
+  const [data, setData] = useState({});
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -54,6 +56,11 @@ const ShippingDetails = () => {
   // };
 
   const handleConfirm = () => {
+    const dispatch = {
+      ...formik.values,
+      cartCheck,
+    };
+    setData(dispatch);
     setCheckOut(true);
   };
 
@@ -184,7 +191,7 @@ const ShippingDetails = () => {
           </Form>
         </main>
       </div>
-      {checkOut ? <ProductCheckout /> : ""}
+      {checkOut ? <ProductCheckout data={data} /> : ""}
     </>
   );
 };

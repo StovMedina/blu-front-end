@@ -1,23 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import RadioButton from "../../components/Button/RadioButton";
 import Form from "react-bootstrap/Form";
 import BluButton from "../../components/Button/BluButton";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import apiURL from "../../config";
+import CartCard from "../../components/Cards/CartCard/CartCard";
 
-const ProductCheckout = () => {
+const ProductCheckout = ({ data }) => {
   const navigate = useNavigate();
+
+  const [displayCart, setDisplayCart] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${apiURL}/products/cart/id=${data.cartCheck}`)
+      .then((res) => setDisplayCart(res.data.payload));
+  }, []);
+
   return (
     <main className="container">
       <h1 className="text-center mb-3">¡Ya casi es tuyo!</h1>
       <div className="row">
-        <div className="col-12 col-md-6">Cards de productos adquiridos</div>
+        <div className="col-12 col-md-6">
+          {displayCart.map((product) => (
+            <div className="" key={product._id}>
+              <CartCard
+                image={product.image}
+                name={product.name}
+                size={product.size}
+                price={product.price}
+              />
+            </div>
+          ))}
+        </div>
         <div className="col-12 col-md-6">
           <h3 className="text-center">Son correctos tus datos? </h3>
           <h3 className="text-center">Datos de Entrega</h3>
           <div className="d-flex flex-column">
-            <span>Nombre:</span>
-            <span>Dirección:</span>
-            <span>Teléfono:</span>
+            <span>Nombre: {data.name}</span>
+            <span>
+              {`Dirección: ${data.street} Número Interior: ${data.intNumber} Colonia: ${data.neighborhood} Estado: ${data.state} CP: ${data.postalCode}`}
+            </span>
+            <span>Teléfono: {data.phone}</span>
           </div>
           <Form>
             <RadioButton
