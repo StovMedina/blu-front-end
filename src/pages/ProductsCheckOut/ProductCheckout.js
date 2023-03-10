@@ -6,17 +6,41 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import apiURL from "../../config";
 import CartCard from "../../components/Cards/CartCard/CartCard";
+import jwtDecode from "jwt-decode";
 
 const ProductCheckout = ({ data }) => {
   const navigate = useNavigate();
 
   const [displayCart, setDisplayCart] = useState([]);
+  const [buyerId, setBuyerId] = useState("");
 
   useEffect(() => {
-    axios
-      .get(`${apiURL}/products/cart/id=${data.cartCheck}`)
-      .then((res) => setDisplayCart(res.data.payload));
+    const token = localStorage.getItem("token");
+    const decode = jwtDecode(token);
+    const userId = decode.userId;
+    setBuyerId(userId);
+
+    axios.get(`${apiURL}/products/cart/id=${data.cartCheck}`).then((res) => {
+      setDisplayCart(res.data.payload);
+    });
   }, []);
+  console.log(displayCart);
+
+  const createOrder = () => {
+    const order = {
+      products: displayCart.map((product) => product._id),
+      total: displayCart.reduce((total, product) => total + product.price, 0),
+      userId: buyerId,
+      createdAt: "2022-03-02T18:00:00Z",
+      status: "Canceled",
+      trackingNumber: "123456798",
+      shipmentMethod: "dhl",
+      shipmentDate: "12/12/12",
+    };
+    console.log(order);
+    //axios.post(`${apiURL}/user-order`, order);
+  };
+  createOrder();
 
   return (
     <main className="container">
