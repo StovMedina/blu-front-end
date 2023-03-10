@@ -61,12 +61,6 @@ const Admin = () => {
         </Nav>
       </aside>
       <main>
-        {/* <ProductsAdmin
-          extraClass={showComponent === "products" ? "d-block" : "d-none"}
-        />
-        <AdminTable
-          extraClass={showComponent === "users" ? "d-block" : "d-none"}
-        /> */}
         {showComponent === "products" ? (
           <ProductsAdmin />
         ) : showComponent === "users" ? (
@@ -74,7 +68,7 @@ const Admin = () => {
         ) : showComponent === "orders" ? (
           <OrdersTable />
         ) : (
-          <div>No Info</div>
+          <div>¿Qué te gustaría ver?</div>
         )}
       </main>
     </div>
