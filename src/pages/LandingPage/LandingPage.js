@@ -45,18 +45,29 @@ const LandingPage = () => {
             data.map((product, index) => (
               <div className="col" key={index}>
                 <BluCard
-                  actionOnClick={() => handleClick(product._id)}
                   extraClass="p-1"
                   id={product._id}
                   variant="top"
+                  actionOnImage={() => handleClick(product._id)}
                   src={product.image}
-                  cardTitle={product.name}
+                  cardTitle={product.price}
+                  cardTitle2={product.name}
                   cardText={product.description}
-                  children={[<BluButton key={product._id} text="Comprar" />]}
+                  children={[
+                    <BluButton
+                      extraClass="landing-button__buy"
+                      key={product._id}
+                      text="Comprar"
+                      actionOnClick={() => handleClick(product._id)}
+                    ></BluButton>,
+                    <BluButton
+                      key="cart"
+                      extraClass="landing-button__cart"
+                      text="Añadir +"
+                      actionOnClick={() => handleCart(product._id)}
+                    ></BluButton>,
+                  ]}
                 ></BluCard>
-                <BluCartButton
-                  actionOnClick={() => handleCart(product._id)}
-                ></BluCartButton>
               </div>
             ))
           )}

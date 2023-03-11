@@ -40,4 +40,21 @@
 //   gap: 15px;
 //   display: grid;
 //   grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+//   background-color: aquamarine;
 // }
+
+.landing-button__buy {
+  width: 103px;
+  background-color: #8790f9;
+  height: auto;
+  border: 1px solid #8790f9;
+  border-radius: 50px;
+  text-align: center;
+}
+
+.landing-button__cart {
+  background-color: white;
+  color: #767676;
+  border: 1px solid #3df95c;
+  border-radius: 50px;
+}
