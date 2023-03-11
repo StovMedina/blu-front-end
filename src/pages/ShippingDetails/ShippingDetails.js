@@ -27,26 +27,6 @@ const ShippingDetails = () => {
     setCartCheck(cartString);
   }, []);
 
-  const createOrder = () => {
-    const order = {
-      products: [
-        "61fe41f9e22e8c865bfe39f5",
-        "61fe41f9e22e8c865bfe39f6",
-        "61fe41f9e22e8c865bfe39f7",
-        "61fe41f9e22e8c865bfe39f8",
-      ],
-      total: 80,
-      userId: "123456789012345678901234",
-      createdAt: "2022-03-02T18:00:00Z",
-      status: "Canceled",
-      trackingNumber: "123456798",
-      shipmentMethod: "dhl",
-      shipmentDate: "12/12/12",
-    };
-    console.log("running create order");
-    axios.post(`${apiURL}/user-order`, order);
-  };
-
   // const handleCheckOut = () => {
   //   const idForCheckOut = { id: cartCheck };
   //   axios.post(`${apiURL}/payment`, idForCheckOut).then((res) => {

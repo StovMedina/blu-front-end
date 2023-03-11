@@ -11,6 +11,8 @@ import jwtDecode from "jwt-decode";
 const ProductCheckout = ({ data }) => {
   const navigate = useNavigate();
 
+  const [shippingMethod, setShippingMethod] = useState("");
+
   const [displayCart, setDisplayCart] = useState([]);
   const [buyerId, setBuyerId] = useState("");
 
@@ -24,23 +26,31 @@ const ProductCheckout = ({ data }) => {
       setDisplayCart(res.data.payload);
     });
   }, []);
-  console.log(displayCart);
+
+  const handleOnChange = (value) => {
+    setShippingMethod(value);
+  };
 
   const createOrder = () => {
     const order = {
       products: displayCart.map((product) => product._id),
       total: displayCart.reduce((total, product) => total + product.price, 0),
       userId: buyerId,
-      createdAt: "2022-03-02T18:00:00Z",
-      status: "Canceled",
-      trackingNumber: "123456798",
-      shipmentMethod: "dhl",
-      shipmentDate: "12/12/12",
+      createdAt: Date.now().toString(),
+      trackingNumber: "",
+      shipmentMethod: shippingMethod,
+      shipmentDate: "",
     };
-    console.log(order);
-    //axios.post(`${apiURL}/user-order`, order);
+    axios.post(`${apiURL}/user-order`, order);
   };
-  createOrder();
+
+  const handleCheckOut = () => {
+    const idForCheckOut = { id: data.cartCheck };
+    axios.post(`${apiURL}/payment`, idForCheckOut).then((res) => {
+      window.location.replace(res.data.payload.body.init_point);
+      createOrder();
+    });
+  };
 
   return (
     <main className="container">
@@ -73,23 +83,29 @@ const ProductCheckout = ({ data }) => {
               name="shipping"
               type="radio"
               label="Envio estandar gratis"
+              value="free"
+              actionOnChange={(event) => handleOnChange(event.target.value)}
             />
             <RadioButton
               name="shipping"
               type="radio"
               label="Entrega premium $50"
+              value="premium"
+              actionOnChange={(event) => handleOnChange(event.target.value)}
             />
             <RadioButton
               name="shipping"
               type="radio"
               label="Entrega en punta de venta gratis"
+              value="checkpoint"
+              actionOnChange={(event) => handleOnChange(event.target.value)}
             />
           </Form>
           <div className="col-12 d-flex align-items-center justify-content-end">
             <span onClick={() => navigate("/blu")}>Cancelar</span>
             <BluButton
               extraClass="ms-5"
-              actionOnClick={() => navigate("/")}
+              actionOnClick={() => handleCheckOut()}
               variant="primary"
               text="Pagar"
             />

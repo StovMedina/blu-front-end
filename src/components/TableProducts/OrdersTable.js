@@ -12,6 +12,7 @@ const OrdersTable = (props) => {
     axios
       .get(`${apiURL}/user-order`)
       .then((res) => setDashboardData(res.data.payload))
+      //.then((res) => console.log(res.data.payload))
       .catch((error) => console.error(error));
   }, []);
 
