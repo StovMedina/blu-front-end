@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../Footer/Footer";
 import NavBarMenu from "../GeneralMenu/NavBarMenu";
 
 export const ShopLayout = ({ children }) => {
@@ -9,7 +10,7 @@ export const ShopLayout = ({ children }) => {
       <div className="flex-grow-1 d-flex flex-column justify-content-center">
         {children}
       </div>
-      <div>Soy un footer</div>
+      <Footer />
     </div>
   );
 };
