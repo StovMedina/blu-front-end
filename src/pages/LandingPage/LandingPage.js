@@ -3,7 +3,6 @@ import BluCard from "../../components/Cards/PrimaryCard/BluCard";
 import "./LandingPage.scss";
 import axios from "axios";
 import BluButton from "../../components/Button/BluButton";
-import BluCartButton from "../../components/Button/BluCartButton";
 import { useNavigate } from "react-router-dom";
 import apiURL from "../../config";
 

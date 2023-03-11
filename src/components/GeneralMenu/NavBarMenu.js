@@ -6,6 +6,7 @@ import BluButton from "../Button/BluButton";
 import BluCartButton from "../Button/BluCartButton";
 import BluUserButton from "../Button/BluUserButton";
 import { useNavigate } from "react-router-dom";
+import "./NavBarMenu.scss";
 
 function NavBarMenu() {
   const navigate = useNavigate();
