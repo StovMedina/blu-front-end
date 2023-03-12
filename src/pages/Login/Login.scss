@@ -1,3 +1,80 @@
-.login-container {
-  height: 100vh;
+.border-container_blue {
+  margin-top: 100px;
+  border: 1px ;
+  background-color: #FFFFFF;
+  width: 800px;
+  height: 500px;
+  border-radius: 30px;
+}
+
+.border-container {
+  border: 1px;
+  width: 800px;
+}
+
+// .logo-blu {
+//   width: 125px;
+//   height: 26px;
+//   left: 335px;
+//   top: 192px;
+//   font-family: "Robot";
+//   font-style: "normal";
+//   font-weight: 700;
+//   font-size: 22px;
+//   line-height: 26px;
+// }
+
+.parrafo1-login {
+  width: 295px;
+  height: 42px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: #000000;
+}
+
+.format-input {
+  box-sizing: border-box;
+  width: 283px;
+  height: 118px;
+}
+
+.parrafo2-login {
+  width: 118px;
+  height: 14px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #797979;
+  margin-bottom: 50px;
+
+}
+
+.button.login {
+  width: 222px;
+  height: 46px;
+  background-color: #0057FF;
+  border-radius: 50px;
+  border: none;
+}
+
+.button-googel {
+  width: 222px;
+  height: 46px;
+  background-color: #FFFFFF;
+  border-radius: 50px;
+  border: 1px solid #909090;
+}
+
+
+.border-container_red {
+  border: 1px;
+  width: 200x;
 }
