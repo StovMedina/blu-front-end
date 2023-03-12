@@ -4,7 +4,11 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 const BluCartButton = (props) => {
   return (
-    <FontAwesomeIcon onClick={props.actionOnClick} icon={faShoppingCart} />
+    <FontAwesomeIcon
+      onClick={props.actionOnClick}
+      icon={faShoppingCart}
+      className={props.extraClass}
+    />
   );
 };
 

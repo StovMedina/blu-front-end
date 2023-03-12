@@ -31,11 +31,14 @@ function NavBarMenu() {
         </Navbar.Collapse>
         <BluButton
           href="https://api.whatsapp.com/send?phone=0123456789"
-          variant="success"
+          extraClass="donate-button mx-2 "
           text="Quieres ser donador?"
         />
-        <BluCartButton actionOnClick={() => navigate("/cart")} />
-        <BluUserButton />
+        <BluCartButton
+          extraClass="mx-2"
+          actionOnClick={() => navigate("/cart")}
+        />
+        <BluUserButton extraClass="mx-2" />
       </Container>
     </Navbar>
   );
