@@ -34,11 +34,8 @@ function NavBarMenu() {
           extraClass="donate-button mx-2 "
           text="Quieres ser donador?"
         />
-        <BluCartButton
-          extraClass="mx-2"
-          actionOnClick={() => navigate("/cart")}
-        />
-        <BluUserButton extraClass="mx-2" />
+        <BluCartButton actionOnClick={() => navigate("/blu/cart")} />
+        <BluUserButton actionOnClick={() => navigate("/auth/login")} />
       </Container>
     </Navbar>
   );

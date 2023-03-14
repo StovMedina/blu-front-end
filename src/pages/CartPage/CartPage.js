@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import BluButton from "../../components/Button/BluButton";
 import CartCard from "../../components/Cards/CartCard/CartCard";
 
 const CartPage = () => {
@@ -30,6 +31,7 @@ const CartPage = () => {
           </div>
         ))
       )}
+      <BluButton text="pasar a pagar" />
     </div>
   );
 };

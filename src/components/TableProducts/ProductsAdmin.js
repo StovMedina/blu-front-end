@@ -25,7 +25,7 @@ const ProductsAdmin = (props) => {
   };
 
   return (
-    <div className={`landing-container ${props.extraClass}`}>
+    <div className={`landing-container${props.extraClass}`}>
       <main className="landing-main__container container-fluid">
         <div className="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-4">
           {data.length < 1 ? (

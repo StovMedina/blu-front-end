@@ -4,6 +4,7 @@ import { SignUpLogInRoute } from "./SignUpLogInRoute";
 import jwtDecode from "jwt-decode";
 import { useEffect, useState } from "react";
 import Admin from "../pages/Admin/Admin";
+import { PublicRoutes } from "./PublicRoutes";
 
 export const AppRoute = () => {
   const [userRol, setUserRol] = useState("");
@@ -17,17 +18,18 @@ export const AppRoute = () => {
         setUserRol("client");
       }
     }
-  }, [userRol]);
+  }, [userRol, token]);
 
   return (
     <BrowserRouter>
       <Routes>
         {userRol === "admin" ? (
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/" element={<Admin />} />
         ) : (
-          <Route path="*" element={<ShopRoutes />} />
+          <Route path="/shop/*" element={<ShopRoutes />} />
         )}
         <Route path="/auth/*" element={<SignUpLogInRoute />} />
+        <Route path="/blu/*" element={<PublicRoutes />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Nav from "react-bootstrap/Nav";
 import AdminTable from "../../components/TableProducts/AdminTable";
+import OrdersTable from "../../components/TableProducts/OrdersTable";
 import ProductsAdmin from "../../components/TableProducts/ProductsAdmin";
 
 const Admin = () => {
@@ -60,12 +61,15 @@ const Admin = () => {
         </Nav>
       </aside>
       <main>
-        <ProductsAdmin
-          extraClass={showComponent === "products" ? "d-block" : "d-none"}
-        />
-        <AdminTable
-          extraClass={showComponent === "users" ? "d-block" : "d-none"}
-        />
+        {showComponent === "products" ? (
+          <ProductsAdmin />
+        ) : showComponent === "users" ? (
+          <AdminTable />
+        ) : showComponent === "orders" ? (
+          <OrdersTable />
+        ) : (
+          <div>¿Qué te gustaría ver?</div>
+        )}
       </main>
     </div>
   );
