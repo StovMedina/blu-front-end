@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import BluButton from "../../Button/BluButton";
 
 const CartCard = (props) => {
   return (
@@ -9,10 +10,10 @@ const CartCard = (props) => {
       <div className="d-flex flex-column  justify-content-center ms-2">
         <h4>{props.name}</h4>
         <span>
-          {props.size}-{props.price}
+          Talla: {props.size} Precio: {props.price}
         </span>
+        {props.children}
       </div>
-      <FontAwesomeIcon icon={faCircleXmark} />
     </div>
   );
 };

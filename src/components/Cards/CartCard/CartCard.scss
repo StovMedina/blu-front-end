@@ -1,10 +1,18 @@
 .cart-card-container {
-  width: 400px;
-  height: 60px;
-  border: 1px solid grey;
+  width: 460px;
+  height: 142px;
+  border: 1px solid #939393;
+  border-radius: 20px;
+  margin-bottom: 20px;
   .cart-card-image {
     height: 100%;
     aspect-ratio: 3 / 2;
     object-fit: contain;
   }
+}
+.cart-dismiss {
+  background-color: white;
+  color: #767676;
+  border: 1px solid #3df95c;
+  border-radius: 50px;
 }
