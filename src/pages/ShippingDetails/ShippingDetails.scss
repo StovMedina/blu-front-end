@@ -1,3 +1,28 @@
-.empty-container{
-    height: 150px;
+.empty-container {
+  height: 150px;
+}
+.form-container {
+  width: 800px;
+  height: 500px;
+  border: 1px solid #9c9c9c;
+  border-radius: 30px;
+  .shipping-button {
+    width: 103px;
+    background-color: #8790f9;
+    height: auto;
+    border: 1px solid #8790f9;
+    border-radius: 50px;
+    text-align: center;
+  }
+  .cancel-button {
+    background-color: white;
+    color: #767676;
+    border: 1px solid #3df95c;
+    border-radius: 50px;
+  }
+}
+
+.shipping-header {
+  border-bottom: 3px solid #0009ec;
+  width: 81%;
 }

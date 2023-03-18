@@ -63,9 +63,12 @@ const ShippingDetails = () => {
 
   return (
     <>
+      <div className="shipping-header">
+        <h1>Detalles de envio</h1>
+      </div>
       <div className={checkOut ? "d-none" : "d-block"}>
-        <main className="container">
-          <h1 className="text-center mb-3">Datos de Entrega</h1>
+        <main className="container form-container">
+          <h1 className="text-center">¿A dónde envieremos tu pedido?</h1>
           <div className="empty-container"></div>
           <Form className="row" onSubmit={formik.handleSubmit}>
             <BluInput
@@ -160,9 +163,13 @@ const ShippingDetails = () => {
               text={formik.errors.state}
             />
             <div className="col-12 d-flex align-items-center justify-content-end">
-              <span onClick={() => navigate("/blu/")}>Cancelar</span>
               <BluButton
-                extraClass="ms-5"
+                extraClass="cancel-button"
+                text="Cancelar"
+                actionOnClick={() => navigate("/blu/")}
+              />
+              <BluButton
+                extraClass="ms-5 shipping-button"
                 variant="primary"
                 text="Continuar"
                 type="submit"

@@ -36,7 +36,7 @@ const CartPage = () => {
     <div className="container d-flex flex-column justify-content-center align-items-center">
       <h1 className="text-center">Aún no hay elementos en el carrito</h1>
       <BluButton
-        extraClass="mt-4"
+        extraClass="mt-4 goback-button"
         text="volver a la página"
         actionOnClick={() => navigate("/blu")}
       />
@@ -72,7 +72,6 @@ const CartPage = () => {
                 </div>
               ))
             )}
-            <BluButton extraClass="checkout-button" text="pasar a pagar" />
           </div>
         </div>
       </main>
@@ -91,6 +90,14 @@ const CartPage = () => {
             <h3>
               Total {data.reduce((total, product) => total + product.price, 0)}
             </h3>
+          </div>
+          <div className="d-flex">
+            <BluButton
+              extraClass="cancel-button"
+              text="Cancelar"
+              actionOnClick={() => navigate("/blu/")}
+            />
+            <BluButton extraClass="checkout-button" text="pasar a pagar" />
           </div>
         </div>
       </aside>
